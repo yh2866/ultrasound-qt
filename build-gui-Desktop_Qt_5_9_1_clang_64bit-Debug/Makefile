@@ -51,9 +51,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../gui/main.cpp \
-		../gui/mainwindow.cpp moc_mainwindow.cpp
+		../gui/mainwindow.cpp qrc_resources.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
+		qrc_resources.o \
 		moc_mainwindow.o
 DIST          = /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/qdevice.pri \
@@ -213,6 +215,7 @@ DIST          = /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		../gui/.qmake.stash \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -416,6 +419,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -443,6 +447,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/lex.prf \
 		../gui/gui.pro \
+		../gui/resources.qrc \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl
@@ -605,6 +610,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf:
@@ -632,6 +638,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/yacc.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/lex.prf:
 ../gui/gui.pro:
+../gui/resources.qrc:
 /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl:
 /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -664,6 +671,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../gui/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../gui/main.cpp ../gui/mainwindow.cpp $(DISTDIR)/
@@ -677,6 +685,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r gui.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -690,8 +699,14 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: ../gui/resources.qrc \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/bin/rcc \
+		../gui/sampleimg.jpeg
+	/Users/wanlinxie/Qt/5.9.1/clang_64/bin/rcc -name resources ../gui/resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -725,7 +740,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -741,6 +756,9 @@ mainwindow.o: ../gui/mainwindow.cpp ../gui/mainwindow.h \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../gui/mainwindow.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

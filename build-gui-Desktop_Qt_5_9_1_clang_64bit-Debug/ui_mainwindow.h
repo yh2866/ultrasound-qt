@@ -15,8 +15,10 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -29,8 +31,10 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QFrame *frame;
+    QLabel *label;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QScrollBar *horizontalScrollBar;
-    QScrollBar *verticalScrollBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -40,21 +44,28 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(400, 300);
+        MainWindow->setStyleSheet(QStringLiteral(""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         frame = new QFrame(centralWidget);
         frame->setObjectName(QStringLiteral("frame"));
-        frame->setGeometry(QRect(10, 10, 381, 191));
+        frame->setGeometry(QRect(10, 10, 381, 171));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
-        horizontalScrollBar = new QScrollBar(frame);
+        label = new QLabel(frame);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(-50, -50, 501, 311));
+        label->setStyleSheet(QStringLiteral("border-image:url(:/Resources/sampleimg.jpeg)"));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(80, 210, 113, 32));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(200, 210, 113, 32));
+        horizontalScrollBar = new QScrollBar(centralWidget);
         horizontalScrollBar->setObjectName(QStringLiteral("horizontalScrollBar"));
-        horizontalScrollBar->setGeometry(QRect(10, 160, 341, 21));
+        horizontalScrollBar->setGeometry(QRect(10, 190, 341, 21));
         horizontalScrollBar->setOrientation(Qt::Horizontal);
-        verticalScrollBar = new QScrollBar(frame);
-        verticalScrollBar->setObjectName(QStringLiteral("verticalScrollBar"));
-        verticalScrollBar->setGeometry(QRect(356, 10, 20, 141));
-        verticalScrollBar->setOrientation(Qt::Vertical);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -75,6 +86,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainWindow", "Zoom In", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Zoom Out", Q_NULLPTR));
     } // retranslateUi
 
 };
