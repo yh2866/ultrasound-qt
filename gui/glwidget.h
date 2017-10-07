@@ -28,6 +28,9 @@ public slots:
     void setXRotation(int angle);
     void setYRotation(int angle);
     void setZRotation(int angle);
+    void addXRotation(int angle);
+    void addYRotation(int angle);
+    void addZRotation(int angle);
     void cleanup();
 
 signals:

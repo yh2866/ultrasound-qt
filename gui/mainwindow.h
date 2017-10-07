@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::MainWindow *ui; //be able to access widgets
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

@@ -76,6 +76,21 @@ void GLWidget::setZRotation(int angle)
     }
 }
 
+void GLWidget::addXRotation(int angle)
+{
+    setXRotation(angle + m_xRot);
+}
+
+void GLWidget::addYRotation(int angle)
+{
+    setYRotation(angle + m_yRot);
+}
+
+void GLWidget::addZRotation(int angle)
+{
+    setZRotation(angle + m_zRot);
+}
+
 void GLWidget::cleanup()
 {
     if (m_program == nullptr)
