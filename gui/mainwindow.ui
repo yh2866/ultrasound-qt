@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>683</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,43 +17,11 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QFrame" name="frame">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>181</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>-50</x>
-       <y>-50</y>
-       <width>501</width>
-       <height>311</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-image:url(:/Resources/sampleimg.jpeg)</string>
-     </property>
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>210</y>
+      <x>230</x>
+      <y>590</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -65,8 +33,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>210</y>
+      <x>350</x>
+      <y>590</y>
       <width>113</width>
       <height>32</height>
      </rect>
@@ -78,8 +46,8 @@
    <widget class="QScrollBar" name="horizontalScrollBar">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>190</y>
+      <x>160</x>
+      <y>570</y>
       <width>341</width>
       <height>21</height>
      </rect>
@@ -91,20 +59,25 @@
    <widget class="GLWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>10</x>
       <y>10</y>
-      <width>171</width>
-      <height>171</height>
+      <width>661</width>
+      <height>551</height>
      </rect>
     </property>
    </widget>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>horizontalScrollBar</zorder>
+   <zorder>openGLWidget</zorder>
+   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>683</width>
      <height>22</height>
     </rect>
    </property>
