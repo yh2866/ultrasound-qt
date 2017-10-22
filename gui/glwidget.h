@@ -6,7 +6,7 @@
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLBuffer>
 #include <QMatrix4x4>
-#include "logo.h"
+#include "Plotter.h"
 
 QT_FORWARD_DECLARE_CLASS(QOpenGLShaderProgram)
 
@@ -26,6 +26,7 @@ public:
 
 public slots:
     void rotateCameraAroundY(int angle);
+    void shiftCameraY(qreal dy);
     void cameraZoom(int diff);
 
     void cleanup();
@@ -40,6 +41,7 @@ protected:
     void paintGL() override;
     void resizeGL(int width, int height) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
 
 private:
@@ -50,7 +52,7 @@ private:
     int m_yRot;
     int m_zRot;
     QPoint m_lastPos;
-    Logo m_logo;
+    Plotter m_logo;
     QOpenGLVertexArrayObject m_vao;
     QOpenGLBuffer m_logoVbo;
     QOpenGLShaderProgram *m_program;
@@ -63,6 +65,7 @@ private:
     QMatrix4x4 m_world;
     static bool m_transparent;
     int zoom10Factor = 5;
+    qreal shiftedAmount = 0;
 };
 
 #endif // GLWIDGET_H

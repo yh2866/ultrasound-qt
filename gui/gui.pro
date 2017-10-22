@@ -27,12 +27,12 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
 	glwidget.cpp \
-	logo.cpp
+        Plotter.cpp
 
 HEADERS += \
         mainwindow.h \
 	glwidget.h \
-	logo.h
+        Plotter.h
 
 FORMS += \
         mainwindow.ui

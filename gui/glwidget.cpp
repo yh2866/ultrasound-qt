@@ -44,12 +44,15 @@ void GLWidget::rotateCameraAroundY(int angle){
     update();
 }
 
+void GLWidget::shiftCameraY(qreal dy){
+    shiftedAmount += dy;
+    m_camera.translate(0,dy,0);
+    update();
+}
+
 void GLWidget::cameraZoom(int diff){
     if(zoom10Factor+diff>10 || zoom10Factor+diff<1)
         return;
-
-
-
     m_camera.scale(1.0/(zoom10Factor)*10.0);
     zoom10Factor += diff;
     m_camera.scale((zoom10Factor)/10.0);
@@ -176,7 +179,8 @@ void GLWidget::initializeGL()
 
 void GLWidget::setupVertexAttribs()
 {
-    m_logoVbo.bind();
+    bool bap = m_logoVbo.bind();
+    qInfo() << "binding:" << (bap?"Y":"N");
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
     f->glEnableVertexAttribArray(0);
     f->glEnableVertexAttribArray(1);
@@ -219,6 +223,11 @@ void GLWidget::mousePressEvent(QMouseEvent *event)
     m_lastPos = event->pos();
 }
 
+void GLWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+    shiftCameraY(-shiftedAmount);
+}
+
 void GLWidget::mouseMoveEvent(QMouseEvent *event)
 {
     int dx = event->x() - m_lastPos.x();
@@ -226,6 +235,7 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
     if (event->buttons() & Qt::LeftButton) {
         rotateCameraAroundY(dx);
+        shiftCameraY(-0.01f * dy);
     } else if (event->buttons() & Qt::RightButton) {
         cameraZoom(-dy);
     }
