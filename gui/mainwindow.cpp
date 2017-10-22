@@ -18,9 +18,9 @@ MainWindow::~MainWindow()
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     switch(event->key()){
-        case Qt::Key_Right : ui->openGLWidget->addYRotation(-30); break;
-        case Qt::Key_Left : ui->openGLWidget->addYRotation(30); break;
-        case Qt::Key_Up : ui->openGLWidget->addXRotation(30); break;
-        case Qt::Key_Down : ui->openGLWidget->addXRotation(-30); break;
+        case Qt::Key_Right : ui->openGLWidget->rotateCameraAroundY(10); break;
+        case Qt::Key_Left : ui->openGLWidget->rotateCameraAroundY(-10); break;
+        case Qt::Key_Up : ui->openGLWidget->cameraZoom(-1); break;
+        case Qt::Key_Down : ui->openGLWidget->cameraZoom(1); break;
     }
 }

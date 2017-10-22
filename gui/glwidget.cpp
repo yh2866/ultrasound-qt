@@ -76,19 +76,20 @@ void GLWidget::setZRotation(int angle)
     }
 }
 
-void GLWidget::addXRotation(int angle)
-{
-    setXRotation(angle + m_xRot);
+
+void GLWidget::rotateCameraAroundY(int angle){
+    m_camera.rotate(angle,0,1,0);
+    update();
 }
 
-void GLWidget::addYRotation(int angle)
-{
-    setYRotation(angle + m_yRot);
-}
-
-void GLWidget::addZRotation(int angle)
-{
-    setZRotation(angle + m_zRot);
+void GLWidget::cameraZoom(int diff){
+    if(zoom10Factor+diff>10 || zoom10Factor+diff<1)
+        return;
+    qInfo( "C Style Info Message" );
+    m_camera.scale(1.0/(zoom10Factor));
+    zoom10Factor += diff;
+    m_camera.scale((zoom10Factor)/10.0);
+    update();
 }
 
 void GLWidget::cleanup()

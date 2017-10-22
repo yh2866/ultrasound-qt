@@ -28,9 +28,10 @@ public slots:
     void setXRotation(int angle);
     void setYRotation(int angle);
     void setZRotation(int angle);
-    void addXRotation(int angle);
-    void addYRotation(int angle);
-    void addZRotation(int angle);
+
+    void rotateCameraAroundY(int angle);
+    void cameraZoom(int diff);
+
     void cleanup();
 
 signals:
@@ -65,6 +66,7 @@ private:
     QMatrix4x4 m_camera;
     QMatrix4x4 m_world;
     static bool m_transparent;
+    int zoom10Factor = 10;
 };
 
 #endif // GLWIDGET_H
