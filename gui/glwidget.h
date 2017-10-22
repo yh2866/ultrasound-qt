@@ -25,10 +25,6 @@ public:
     QSize sizeHint() const override;
 
 public slots:
-    void setXRotation(int angle);
-    void setYRotation(int angle);
-    void setZRotation(int angle);
-
     void rotateCameraAroundY(int angle);
     void cameraZoom(int diff);
 
@@ -66,7 +62,7 @@ private:
     QMatrix4x4 m_camera;
     QMatrix4x4 m_world;
     static bool m_transparent;
-    int zoom10Factor = 10;
+    int zoom10Factor = 5;
 };
 
 #endif // GLWIDGET_H

@@ -38,44 +38,6 @@ QSize GLWidget::sizeHint() const
     return QSize(400, 400);
 }
 
-static void qNormalizeAngle(int &angle)
-{
-    while (angle < 0)
-        angle += 360 * 16;
-    while (angle > 360 * 16)
-        angle -= 360 * 16;
-}
-
-void GLWidget::setXRotation(int angle)
-{
-    qNormalizeAngle(angle);
-    if (angle != m_xRot) {
-        m_xRot = angle;
-        emit xRotationChanged(angle);
-        update();
-    }
-}
-
-void GLWidget::setYRotation(int angle)
-{
-    qNormalizeAngle(angle);
-    if (angle != m_yRot) {
-        m_yRot = angle;
-        emit yRotationChanged(angle);
-        update();
-    }
-}
-
-void GLWidget::setZRotation(int angle)
-{
-    qNormalizeAngle(angle);
-    if (angle != m_zRot) {
-        m_zRot = angle;
-        emit zRotationChanged(angle);
-        update();
-    }
-}
-
 
 void GLWidget::rotateCameraAroundY(int angle){
     m_camera.rotate(angle,0,1,0);
@@ -85,8 +47,10 @@ void GLWidget::rotateCameraAroundY(int angle){
 void GLWidget::cameraZoom(int diff){
     if(zoom10Factor+diff>10 || zoom10Factor+diff<1)
         return;
-    qInfo( "C Style Info Message" );
-    m_camera.scale(1.0/(zoom10Factor));
+
+
+
+    m_camera.scale(1.0/(zoom10Factor)*10.0);
     zoom10Factor += diff;
     m_camera.scale((zoom10Factor)/10.0);
     update();
@@ -261,11 +225,9 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
     int dy = event->y() - m_lastPos.y();
 
     if (event->buttons() & Qt::LeftButton) {
-        setXRotation(m_xRot + 8 * dy);
-        setYRotation(m_yRot + 8 * dx);
+        rotateCameraAroundY(dx);
     } else if (event->buttons() & Qt::RightButton) {
-        setXRotation(m_xRot + 8 * dy);
-        setZRotation(m_zRot + 8 * dx);
+        cameraZoom(-dy);
     }
     m_lastPos = event->pos();
 }
