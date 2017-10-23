@@ -6,15 +6,27 @@
 Plotter::Plotter()
     : m_count(0)
 {
-    m_data.resize(2500 * 6);
+    m_data.resize(50000 * 6);
 
     QVector3D v1(0.0f,-0.25f,0.05f);
     QVector3D v2(0.0f,0.25f,0.05f);
 
 
-    for(int i=0; i<50; i++){
-        QVector3D temp((25 - qrand()%50)*.01f,(25 - qrand()%50)*.01f,(25 - qrand()%50)*.01f);
-        addCube(temp,0.025f);
+    for(int i=0; i<500; i++){
+        QVector3D temp((2500 - qrand()%5000)*.0001f,(2500 - qrand()%5000)*.0001f,(2500 - qrand()%5000)*.0001f);
+        addCube(temp,0.01250f);
+    }
+
+    int count = 0;
+    while(count<500){
+        qreal x = (2500 - qrand()%5000)*.0001f;
+        qreal y = (2500 - qrand()%5000)*.0001f;
+        qreal z = (2500 - qrand()%5000)*.0001f;
+        if(x*x+y*y+z*z > .01f)
+            continue;
+        QVector3D temp(x,y,z);
+        addCube(temp,0.01250f);
+        count++;
     }
 
 
