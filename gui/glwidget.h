@@ -28,6 +28,8 @@ public slots:
     void rotateCameraAroundY(int angle);
     void shiftCameraY(qreal dy);
     void cameraZoom(int diff);
+    void cameraZoomInBy1();
+    void cameraZoomOutBy1();
 
     void cleanup();
 

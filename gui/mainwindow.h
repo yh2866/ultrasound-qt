@@ -15,11 +15,11 @@ public:
     explicit MainWindow(QWidget *parent = 0); //constructor
     ~MainWindow(); //destructor
 
-private:
-    Ui::MainWindow *ui; //be able to access widgets
-
+//private:
+//    Ui::MainWindow *ui; //be able to access widgets
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+    Ui::MainWindow *ui; //be able to access widgets
 };
 
 #endif // MAINWINDOW_H

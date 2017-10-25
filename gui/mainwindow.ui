@@ -17,7 +17,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="zoomIn">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -30,7 +30,7 @@
      <string>Zoom In</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="zoomOut">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -43,34 +43,16 @@
      <string>Zoom Out</string>
     </property>
    </widget>
-   <widget class="QScrollBar" name="horizontalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>570</y>
-      <width>341</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
    <widget class="GLWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>661</width>
-      <height>551</height>
+      <x>30</x>
+      <y>40</y>
+      <width>621</width>
+      <height>521</height>
      </rect>
     </property>
    </widget>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>horizontalScrollBar</zorder>
-   <zorder>openGLWidget</zorder>
-   <zorder>label</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -102,4 +84,8 @@
  </customwidgets>
  <resources/>
  <connections/>
+ <slots>
+  <slot>cameraZoom(2)</slot>
+  <slot>slot2()</slot>
+ </slots>
 </ui>
