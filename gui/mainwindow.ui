@@ -20,7 +20,7 @@
    <widget class="QPushButton" name="zoomIn">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>140</x>
       <y>590</y>
       <width>113</width>
       <height>32</height>
@@ -33,7 +33,7 @@
    <widget class="QPushButton" name="zoomOut">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>30</x>
       <y>590</y>
       <width>113</width>
       <height>32</height>
@@ -49,8 +49,60 @@
       <x>30</x>
       <y>40</y>
       <width>621</width>
-      <height>521</height>
+      <height>491</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftUp">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>560</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Up</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftDown">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Down</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftLeft">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Left</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftRight">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Right</string>
     </property>
    </widget>
   </widget>

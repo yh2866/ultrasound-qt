@@ -51,6 +51,27 @@ void GLWidget::shiftCameraY(qreal dy){
     update();
 }
 
+void GLWidget::shiftUp(){
+    shiftedAmount += 0.1;
+    m_camera.translate(0,0.1,0);
+    update();
+}
+void GLWidget::shiftDown(){
+    shiftedAmount -= 0.1;
+    m_camera.translate(0,-0.1,0);
+    update();
+}
+void GLWidget::shiftRight(){
+    shiftedAmount += 0.1;
+    m_camera.translate(0.1,0,0);
+    update();
+}
+void GLWidget::shiftLeft(){
+    shiftedAmount -= 0.1;
+    m_camera.translate(-0.1,0,0);
+    update();
+}
+
 void GLWidget::cameraZoom(int diff){
     if(zoom10Factor+diff>10 || zoom10Factor+diff<1)
         return;
@@ -60,7 +81,7 @@ void GLWidget::cameraZoom(int diff){
     update();
 }
 
-void GLWidget::cameraZoomInBy1(){
+void GLWidget::cameraZoomIn(){
     if(zoom10Factor+1>10 || zoom10Factor+1<1)
         return;
     m_camera.scale(1.0/(zoom10Factor)*10.0);
@@ -68,7 +89,7 @@ void GLWidget::cameraZoomInBy1(){
     m_camera.scale((zoom10Factor)/10.0);
     update();
 }
-void GLWidget::cameraZoomOutBy1(){
+void GLWidget::cameraZoomOut(){
     if(zoom10Factor-1>10 || zoom10Factor-1<1)
         return;
     m_camera.scale(1.0/(zoom10Factor)*10.0);

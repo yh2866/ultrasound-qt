@@ -12,12 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
     //QPushButton m_button = new QPushButton("Test", this);
     //m_button->setGeometry(QRect(QPoint(100, 100),QSize(200, 50)));
     //connect(zoomIn,clicked(),openGLWidget,cameraZoom(1));
-    GLWidget g;
 
-    //connect(ui->zoomIn,SIGNAL(pressed()), &temp,SLOT(cameraZoom(1)));
-    QObject::connect(ui->zoomIn,SIGNAL(clicked()),ui->openGLWidget,SLOT(cameraZoomInBy1()));
-    QObject::connect(ui->zoomOut,SIGNAL(clicked()),ui->openGLWidget,SLOT(cameraZoomOutBy1()));
-    //connect(ui->zoomIn,SIGNAL(pressed()),this,SLOT(ui->openGLWidget->cameraZoom(1)));
+    connect(ui->zoomIn,SIGNAL(clicked()),ui->openGLWidget,SLOT(cameraZoomIn()));
+    connect(ui->zoomOut,SIGNAL(clicked()),ui->openGLWidget,SLOT(cameraZoomOut()));
+
+    connect(ui->shiftUp,SIGNAL(clicked()),ui->openGLWidget,SLOT(shiftUp()));
+    connect(ui->shiftDown,SIGNAL(clicked()),ui->openGLWidget,SLOT(shiftDown()));
+    connect(ui->shiftRight,SIGNAL(clicked()),ui->openGLWidget,SLOT(shiftRight()));
+    connect(ui->shiftLeft,SIGNAL(clicked()),ui->openGLWidget,SLOT(shiftLeft()));
+
+
 }
 
 MainWindow::~MainWindow()
