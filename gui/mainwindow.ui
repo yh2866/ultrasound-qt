@@ -105,6 +105,29 @@
      <string>Right</string>
     </property>
    </widget>
+   <widget class="QScrollArea" name="transparency">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>560</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>199</width>
+       <height>19</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
