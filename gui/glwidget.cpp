@@ -21,6 +21,7 @@ GLWidget::GLWidget(QWidget *parent)
         fmt.setAlphaBufferSize(8);
         setFormat(fmt);
     }
+
 }
 
 GLWidget::~GLWidget()
@@ -50,6 +51,27 @@ void GLWidget::shiftCameraY(qreal dy){
     update();
 }
 
+void GLWidget::shiftUp(){
+    shiftedAmount += 0.1;
+    m_camera.translate(0,0.1,0);
+    update();
+}
+void GLWidget::shiftDown(){
+    shiftedAmount -= 0.1;
+    m_camera.translate(0,-0.1,0);
+    update();
+}
+void GLWidget::shiftRight(){
+    shiftedAmount += 0.1;
+    m_camera.translate(0.1,0,0);
+    update();
+}
+void GLWidget::shiftLeft(){
+    shiftedAmount -= 0.1;
+    m_camera.translate(-0.1,0,0);
+    update();
+}
+
 void GLWidget::cameraZoom(int diff){
     if(zoom10Factor+diff>10 || zoom10Factor+diff<1)
         return;
@@ -58,6 +80,24 @@ void GLWidget::cameraZoom(int diff){
     m_camera.scale((zoom10Factor)/10.0);
     update();
 }
+
+void GLWidget::cameraZoomIn(){
+    if(zoom10Factor+1>10 || zoom10Factor+1<1)
+        return;
+    m_camera.scale(1.0/(zoom10Factor)*10.0);
+    zoom10Factor += 1;
+    m_camera.scale((zoom10Factor)/10.0);
+    update();
+}
+void GLWidget::cameraZoomOut(){
+    if(zoom10Factor-1>10 || zoom10Factor-1<1)
+        return;
+    m_camera.scale(1.0/(zoom10Factor)*10.0);
+    zoom10Factor += -1;
+    m_camera.scale((zoom10Factor)/10.0);
+    update();
+}
+
 
 void GLWidget::cleanup()
 {
@@ -121,9 +161,14 @@ static const char *fragmentShaderSource =
     "void main() {\n"
     "   highp vec3 L = normalize(lightPos - vert);\n"
     "   highp float NL = max(dot(normalize(vertNormal), L), 0.0);\n"
-    "   highp vec3 color = (vec3(1.0,(vert[2]+1.75),0));\n"
+//<<<<<<< HEAD
+//    "   highp vec3 color = (vec3(1.0,(vert[2]+1.75),0));\n"
 //    "   highp vec3 col = clamp(color * 0.2 + color * 0.8 * NL, 0.0, 1.0);\n"
-    "   highp vec3 col = clamp(color, 0.0, 1.0);\n"
+//    "   highp vec3 col = clamp(color, 0.0, 1.0);\n"
+//=======
+    "   highp vec3 color = (vec3(1.0,(vert[1]+0.25)/0.5,0));\n"
+    "   highp vec3 col = clamp(color * 0.2 + color * 0.8 * NL, 0.0, 1.0);\n"
+//>>>>>>> 4514c0c7c92151ba76f35a5ee9237bc189b404e7
     "   gl_FragColor = vec4(col, 0.5);\n"
     "}\n";
 

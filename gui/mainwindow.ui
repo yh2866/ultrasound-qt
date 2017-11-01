@@ -17,10 +17,10 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="zoomIn">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>140</x>
       <y>590</y>
       <width>113</width>
       <height>32</height>
@@ -30,10 +30,10 @@
      <string>Zoom In</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="zoomOut">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>30</x>
       <y>590</y>
       <width>113</width>
       <height>32</height>
@@ -43,34 +43,91 @@
      <string>Zoom Out</string>
     </property>
    </widget>
-   <widget class="QScrollBar" name="horizontalScrollBar">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>570</y>
-      <width>341</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
    <widget class="GLWidget" name="openGLWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>661</width>
-      <height>551</height>
+      <x>30</x>
+      <y>40</y>
+      <width>621</width>
+      <height>491</height>
      </rect>
     </property>
    </widget>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>horizontalScrollBar</zorder>
-   <zorder>openGLWidget</zorder>
-   <zorder>label</zorder>
+   <widget class="QPushButton" name="shiftUp">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>560</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Up</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftDown">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Down</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftLeft">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Left</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftRight">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Right</string>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="transparency">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>560</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>199</width>
+       <height>19</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -102,4 +159,8 @@
  </customwidgets>
  <resources/>
  <connections/>
+ <slots>
+  <slot>cameraZoom(2)</slot>
+  <slot>slot2()</slot>
+ </slots>
 </ui>

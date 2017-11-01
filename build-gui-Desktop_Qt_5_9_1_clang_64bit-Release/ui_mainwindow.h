@@ -31,8 +31,6 @@ public:
     QPushButton *zoomIn;
     QPushButton *zoomOut;
     GLWidget *openGLWidget;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -53,13 +51,7 @@ public:
         zoomOut->setGeometry(QRect(350, 590, 113, 32));
         openGLWidget = new GLWidget(centralWidget);
         openGLWidget->setObjectName(QStringLiteral("openGLWidget"));
-        openGLWidget->setGeometry(QRect(30, 40, 621, 451));
-        pushButton_3 = new QPushButton(centralWidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(230, 550, 113, 32));
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(350, 550, 113, 32));
+        openGLWidget->setGeometry(QRect(30, 40, 621, 521));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -82,8 +74,6 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         zoomIn->setText(QApplication::translate("MainWindow", "Zoom In", Q_NULLPTR));
         zoomOut->setText(QApplication::translate("MainWindow", "Zoom Out", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("MainWindow", "Up", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("MainWindow", "Down", Q_NULLPTR));
     } // retranslateUi
 
 };
