@@ -51,10 +51,18 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../gui/main.cpp \
-		../gui/mainwindow.cpp moc_mainwindow.cpp
+		../gui/mainwindow.cpp \
+		../gui/glwidget.cpp \
+		../gui/Plotter.cpp qrc_resources.cpp \
+		moc_mainwindow.cpp \
+		moc_glwidget.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		glwidget.o \
+		Plotter.o \
+		qrc_resources.o \
+		moc_mainwindow.o \
+		moc_glwidget.o
 DIST          = /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/qdevice.pri \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/device_config.prf \
@@ -213,6 +221,7 @@ DIST          = /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		../gui/.qmake.stash \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -239,8 +248,12 @@ DIST          = /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exceptions.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/lex.prf \
-		../gui/gui.pro ../gui/mainwindow.h ../gui/main.cpp \
-		../gui/mainwindow.cpp
+		../gui/gui.pro ../gui/mainwindow.h \
+		../gui/glwidget.h \
+		../gui/Plotter.h ../gui/main.cpp \
+		../gui/mainwindow.cpp \
+		../gui/glwidget.cpp \
+		../gui/Plotter.cpp
 QMAKE_TARGET  = gui
 DESTDIR       = 
 TARGET        = gui.app/Contents/MacOS/gui
@@ -416,6 +429,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -443,6 +457,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/yacc.prf \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/lex.prf \
 		../gui/gui.pro \
+		../gui/resources.qrc \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl
@@ -605,6 +620,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf:
@@ -632,6 +648,7 @@ Makefile: ../gui/gui.pro /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang/q
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/yacc.prf:
 /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/lex.prf:
 ../gui/gui.pro:
+../gui/resources.qrc:
 /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/QtGui.prl:
 /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -664,9 +681,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/main.cpp ../gui/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/mainwindow.h ../gui/glwidget.h ../gui/Plotter.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/main.cpp ../gui/mainwindow.cpp ../gui/glwidget.cpp ../gui/Plotter.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../gui/mainwindow.ui $(DISTDIR)/
 
 
@@ -677,6 +695,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r gui.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -690,17 +709,23 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: ../gui/resources.qrc \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/bin/rcc \
+		../gui/sampleimg.jpeg
+	/Users/wanlinxie/Qt/5.9.1/clang_64/bin/rcc -name resources ../gui/resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h /Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_glwidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_glwidget.cpp
 moc_mainwindow.cpp: /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../gui/mainwindow.h \
@@ -708,13 +733,51 @@ moc_mainwindow.cpp: /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/H
 		/Users/wanlinxie/Qt/5.9.1/clang_64/bin/moc
 	/Users/wanlinxie/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/wanlinxie/Documents/columbia/4-2017fall/ultrasound/ultrasound-qt/gui -I/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/wanlinxie/Qt/5.9.1/clang_64/lib ../gui/mainwindow.h -o moc_mainwindow.cpp
 
+moc_glwidget.cpp: /Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLFunctions \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLVertexArrayObject \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLBuffer \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QMatrix4x4 \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../gui/Plotter.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QVector3D \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qvector3d.h \
+		../gui/glwidget.h \
+		moc_predefs.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/bin/moc
+	/Users/wanlinxie/Qt/5.9.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/wanlinxie/Qt/5.9.1/clang_64/mkspecs/macx-clang -I/Users/wanlinxie/Documents/columbia/4-2017fall/ultrasound/ultrasound-qt/gui -I/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers -I/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/wanlinxie/Qt/5.9.1/clang_64/lib ../gui/glwidget.h -o moc_glwidget.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all: ui_mainwindow.h
 compiler_uic_clean:
 	-$(DEL_FILE) ui_mainwindow.h
 ui_mainwindow.h: ../gui/mainwindow.ui \
-		/Users/wanlinxie/Qt/5.9.1/clang_64/bin/uic
+		/Users/wanlinxie/Qt/5.9.1/clang_64/bin/uic \
+		../gui/glwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLFunctions \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLVertexArrayObject \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLBuffer \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QMatrix4x4 \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../gui/Plotter.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QVector3D \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qvector3d.h
 	/Users/wanlinxie/Qt/5.9.1/clang_64/bin/uic ../gui/mainwindow.ui -o ui_mainwindow.h
 
 compiler_rez_source_make_all:
@@ -725,7 +788,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -739,11 +802,72 @@ main.o: ../gui/main.cpp ../gui/mainwindow.h \
 mainwindow.o: ../gui/mainwindow.cpp ../gui/mainwindow.h \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../gui/glwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLFunctions \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLVertexArrayObject \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLBuffer \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QMatrix4x4 \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../gui/Plotter.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QVector3D \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qvector3d.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QKeyEvent \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../gui/mainwindow.cpp
+
+glwidget.o: ../gui/glwidget.cpp ../gui/glwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QOpenGLWidget \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qopenglwidget.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLFunctions \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglfunctions.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLVertexArrayObject \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglvertexarrayobject.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLBuffer \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglbuffer.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QMatrix4x4 \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qmatrix4x4.h \
+		../gui/Plotter.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QVector3D \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qvector3d.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QOpenGLShaderProgram \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopenglshaderprogram.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o glwidget.o ../gui/glwidget.cpp
+
+Plotter.o: ../gui/Plotter.cpp ../gui/Plotter.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qopengl.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/QVector3D \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtGui.framework/Headers/qvector3d.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qmath.h \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		/Users/wanlinxie/Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Plotter.o ../gui/Plotter.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_glwidget.o: moc_glwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_glwidget.o moc_glwidget.cpp
 
 ####### Install
 

@@ -25,13 +25,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+	glwidget.cpp \
+        Plotter.cpp \
+    data_converter.cpp \
+    process.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+	glwidget.h \
+        Plotter.h \
+    data_converter.h \
+    process.h
 
 FORMS += \
         mainwindow.ui
 
 RESOURCES += \
-    resources.qrc
+resources.qrc
+
+INCLUDEPATH += \
+./eigen-eigen-5a0156e40feb/Eigen
+
+DISTFILES += \
+    data

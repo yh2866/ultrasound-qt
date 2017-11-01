@@ -6,53 +6,125 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>683</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QFrame" name="frame">
+   <widget class="QPushButton" name="zoomIn">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>381</width>
-      <height>191</height>
+      <x>140</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+    <property name="text">
+     <string>Zoom In</string>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+   </widget>
+   <widget class="QPushButton" name="zoomOut">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
     </property>
-    <widget class="QScrollBar" name="horizontalScrollBar">
+    <property name="text">
+     <string>Zoom Out</string>
+    </property>
+   </widget>
+   <widget class="GLWidget" name="openGLWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>621</width>
+      <height>491</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftUp">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>560</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Up</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftDown">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Down</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftLeft">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Left</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shiftRight">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>590</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Right</string>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="transparency">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>560</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>160</y>
-       <width>341</width>
-       <height>21</height>
+       <x>0</x>
+       <y>0</y>
+       <width>199</width>
+       <height>19</height>
       </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="QScrollBar" name="verticalScrollBar">
-     <property name="geometry">
-      <rect>
-       <x>356</x>
-       <y>10</y>
-       <width>20</width>
-       <height>141</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
      </property>
     </widget>
    </widget>
@@ -62,7 +134,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>683</width>
      <height>22</height>
     </rect>
    </property>
@@ -78,6 +150,17 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header location="global">glwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
+ <slots>
+  <slot>cameraZoom(2)</slot>
+  <slot>slot2()</slot>
+ </slots>
 </ui>
