@@ -27,15 +27,25 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
 	glwidget.cpp \
-        Plotter.cpp
+        Plotter.cpp \
+    data_converter.cpp \
+    process.cpp
 
 HEADERS += \
         mainwindow.h \
 	glwidget.h \
-        Plotter.h
+        Plotter.h \
+    data_converter.h \
+    process.h
 
 FORMS += \
         mainwindow.ui
 
 RESOURCES += \
 resources.qrc
+
+INCLUDEPATH += \
+./eigen-eigen-5a0156e40feb/Eigen
+
+DISTFILES += \
+    data

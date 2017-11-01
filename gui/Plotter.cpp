@@ -6,27 +6,54 @@
 Plotter::Plotter()
     : m_count(0)
 {
-    m_data.resize(50000 * 6);
+    m_data.resize(500000 * 6);
 
-    QVector3D v1(0.0f,-0.25f,0.05f);
-    QVector3D v2(0.0f,0.25f,0.05f);
+//    QVector3D v1(0.0f,-0.25f,0.05f);
+//    QVector3D v2(0.0f,0.25f,0.05f);
 
 
-    for(int i=0; i<500; i++){
-        QVector3D temp((2500 - qrand()%5000)*.0001f,(2500 - qrand()%5000)*.0001f,(2500 - qrand()%5000)*.0001f);
-        addCube(temp,0.01250f);
-    }
+//    for(int i=0; i<500; i++){
+//        QVector3D temp((2500 - qrand()%5000)*.0001f,(2500 - qrand()%5000)*.0001f,(2500 - qrand()%5000)*.0001f);
+//        addCube(temp,0.01250f);
+//    }
 
-    int count = 0;
-    while(count<500){
-        qreal x = (2500 - qrand()%5000)*.0001f;
-        qreal y = (2500 - qrand()%5000)*.0001f;
-        qreal z = (2500 - qrand()%5000)*.0001f;
-        if(x*x+y*y+z*z > .01f)
-            continue;
-        QVector3D temp(x,y,z);
-        addCube(temp,0.01250f);
-        count++;
+//    int count = 0;
+//    while(count<500){
+//        qreal x = (2500 - qrand()%5000)*.0001f;
+//        qreal y = (2500 - qrand()%5000)*.0001f;
+//        qreal z = (2500 - qrand()%5000)*.0001f;
+//        if(x*x+y*y+z*z > .01f)
+//            continue;
+//        QVector3D temp(x,y,z);
+//        addCube(temp,0.01250f);
+//        count++;
+//    }
+
+    std::vector<std::vector<int>> arr = read_uint8_data("/home/david/columbiaCS/ultrasound/ultrasound-qt/gui/data");
+    auto m = two_d_array_to_matrix(arr);
+    std::vector<Eigen::MatrixXd> res = cart_to_polar(m);
+    Eigen::MatrixXd x_axis = res[0];
+    Eigen::MatrixXd y_axis = res[1];
+    Eigen::MatrixXd values = res[2];
+    qInfo() << x_axis.size();
+    qInfo() << y_axis.size();
+    qInfo() << values.size();
+
+    int n=0;
+    while(n < values.size())
+    {
+
+        int i = n/250;
+        int j = n%250;
+        qInfo() << j << "," << i;
+        qInfo() << x_axis(i,j);
+        qInfo() << y_axis(i,j);
+        qInfo() << (values(i,j)-60)/4 -2;
+        QVector3D temp(1.5*y_axis(i,j)/1000.0, -1.5*x_axis(i,j)/1000.0 - .25, 0 );
+//        QVector3D temp(1.5*y_axis(i,j)/1000.0, -1.5*x_axis(i,j)/1000.0 - .25, (values(i,j)-60)/4 -2 );
+        addCube(temp, 0.00625f);
+//        qInfo() << "lol";
+        ++n;
     }
 
 

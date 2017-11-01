@@ -4,6 +4,7 @@
 #include <qopengl.h>
 #include <QVector>
 #include <QVector3D>
+#include "data_converter.h"
 
 class Plotter
 {
@@ -20,6 +21,7 @@ private:
     void addTriangle(const QVector3D &v1, const QVector3D &v2, const QVector3D &v3);
     std::vector<QVector3D> makeCubePoints(QVector3D v, GLfloat sideLength);
     void addCube(const QVector3D &v, GLfloat sideLength);
+//    void plotPoints()
 
     QVector<GLfloat> m_data;
     int m_count;
